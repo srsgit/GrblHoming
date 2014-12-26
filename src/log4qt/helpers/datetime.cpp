@@ -73,7 +73,7 @@ namespace Log4Qt
 	    
 	    if (format == QLatin1String("ISO8601"))
 	        format = QLatin1String("yyyy-MM-dd hh:mm:ss.zzz");
-	    if (format == QLatin1String("ABSOLUTE"))
+        if (format == QLatin1String("_ABSOLUTE"))
 	        format = QLatin1String("HH:mm:ss.zzz");
 	    if (format == QLatin1String("DATE"))
 	        format = QLatin1String("dd MMM YYYY HH:mm:ss.zzzz");

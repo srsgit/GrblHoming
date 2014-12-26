@@ -8,6 +8,9 @@
  ****************************************************************/
 
 #include <QDataStream>
+#include <QtPrintSupport/QPrinter>
+#include <QtPrintSupport/QPrintDialog>
+
 #include "mainwindow.h"
 #include "version.h"
 #include "ui_mainwindow.h"
@@ -43,8 +46,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 /// T3
     checkState = ui->btnCheck->isChecked() ;
-/// T4 to display the comma correctly : before read 'sliderStep->value'
-    connect(ui->sliderStep, SIGNAL(valueChanged(int)), this, SLOT(stepChanged(int)) );
 // 'Options'
     opt.init();
 
@@ -126,7 +127,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->IncZBtn,SIGNAL(clicked()),this,SLOT(incZ()));
     connect(ui->DecFourthBtn,SIGNAL(clicked()),this,SLOT(decFourth()));
     connect(ui->IncFourthBtn,SIGNAL(clicked()),this,SLOT(incFourth()));
-/// T4
+
+    connect(ui->Step100Btn,SIGNAL(clicked()),this,SLOT(step100()));
+    connect(ui->Step20Btn,SIGNAL(clicked()),this,SLOT(step20()));
+    connect(ui->Step10Btn,SIGNAL(clicked()),this,SLOT(step10()));
+    connect(ui->Step1Btn,SIGNAL(clicked()),this,SLOT(step1()));
+    connect(ui->StepPtOneBtn,SIGNAL(clicked()),this,SLOT(stepPtOne()));
+
+    ui->StepPtOneBtn->toggle();
+
+    /// T4
     connect(ui->HomeXBtn,SIGNAL(clicked()),this,SLOT(homeX()));
     connect(ui->HomeYBtn,SIGNAL(clicked()),this,SLOT(homeY()));
     connect(ui->HomeZBtn,SIGNAL(clicked()),this,SLOT(homeZ()));
@@ -134,7 +144,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, SIGNAL(goToHomeAxis(char)), &gcode, SLOT(goToHomeAxis(char) ));
     connect(&gcode, SIGNAL(endHomeAxis()), this, SLOT(endHomeAxis() ));
 
-   // connect(ui->btnSetHome,SIGNAL(clicked()),this,SLOT(setHome()));
+    connect(ui->btnSetHome,SIGNAL(clicked()),this,SLOT(setHome()));
+    connect(ui->btnSetHome8mm,SIGNAL(clicked()),this,SLOT(setHome8mm()));
+
     connect(ui->btnSetG92,SIGNAL(clicked()),this,SLOT(setHome()));
     connect(ui->comboCommand->lineEdit(), SIGNAL(editingFinished()),this, SLOT(gotoXYZFourth()));
 /// T3
@@ -150,9 +162,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionAbout,SIGNAL(triggered()),this,SLOT(showAbout()));
 
     connect(ui->btnGoHomeSafe,SIGNAL(clicked()),this,SLOT(goHomeSafe()));
-    connect(ui->verticalSliderZJog,SIGNAL(valueChanged(int)),this,SLOT(zJogSliderDisplay(int)));
-    connect(ui->verticalSliderZJog,SIGNAL(sliderPressed()),this,SLOT(zJogSliderPressed()));
-    connect(ui->verticalSliderZJog,SIGNAL(sliderReleased()),this,SLOT(zJogSliderReleased()));
   //  connect(ui->pushButtonRefreshPos,SIGNAL(clicked()),this,SLOT(refreshPosition()));
 
 /// T3
@@ -168,6 +177,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, SIGNAL(setProgress(int)), ui->progressFileSend, SLOT(setValue(int)));
     connect(this, SIGNAL(setRuntime(QString)), ui->outputRuntime, SLOT(setText(QString)));
     connect(this, SIGNAL(sendSetHome()), &gcode, SLOT(grblSetHome()));
+    connect(this, SIGNAL(sendSetHome8mm()), &gcode, SLOT(grblSetHome8mm()));
 
 /// T3
     connect(this, SIGNAL(goToHome()), &gcode, SLOT(goToHome()));
@@ -414,6 +424,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 /// <-- T4  call 'setUnitMmAll(..)'
     emit setResponseWait(controlParams);
+
+
 }
 
 MainWindow::~MainWindow()
@@ -751,6 +763,15 @@ void MainWindow::setHome()
     emit sendSetHome();
 }
 
+// User has asked to set current position as 'home' = 0,0,8
+void MainWindow::setHome8mm()
+{
+    resetProgress();
+   // sendSetHome8mm();  // ?
+    cmdMan = true;
+    emit sendSetHome8mm();
+}
+
 void MainWindow::resetProgress()
 {
     setProgress(0);
@@ -982,6 +1003,7 @@ void MainWindow::enableGrblDialogButton()
     ui->labelCommand->setEnabled(true);
 
     ui->btnSetHome->setEnabled(true);
+    ui->btnSetHome8mm->setEnabled(true);
 ///  T4
     // Grbl commands
     enableButtonGrblControls(true);
@@ -1024,6 +1046,36 @@ void MainWindow::enableGrblDialogButton()
         ui->labelRuntime->setEnabled(false);
         }
     }
+}
+
+void MainWindow::step100()
+{
+    jogStep = 100.0 * 100.0;
+    stepChanged(jogStep);
+}
+
+void MainWindow::step20()
+{
+    jogStep = 20.0 * 100.0;
+    stepChanged(jogStep);
+}
+
+void MainWindow::step10()
+{
+    jogStep = 10.0 * 100.0;
+    stepChanged(jogStep);
+}
+
+void MainWindow::step1()
+{
+    jogStep = 1.0 * 100.0;
+    stepChanged(jogStep);
+}
+
+void MainWindow::stepPtOne()
+{
+    jogStep = 0.1 * 100.0;
+    stepChanged(jogStep);
 }
 
 void MainWindow::incX()
@@ -1572,7 +1624,7 @@ void MainWindow::readSettings()
 
     QString jogStepStr = settings.value(SETTINGS_JOG_STEP, "10").value<QString>();
     jogStep = jogStepStr.toFloat() ;
-    ui->sliderStep->setValue(int(jogStep*100));
+
 
     settings.beginGroup( "mainwindow" );
     restoreGeometry(settings.value( "geometry", saveGeometry() ).toByteArray());
@@ -1996,105 +2048,6 @@ void MainWindow::lcdDisplay(char axis, bool workCoord, float floatVal)
     }
 }
 
-void MainWindow::zJogSliderDisplay(int pos)
-{
-    QString str;
-
-    pos -= CENTER_POS;
-
-    if (pos > 0)
-        if(controlParams.useMm)
-            str.sprintf("+%d", pos);
-        else
-            str.sprintf("+%.1f",(double)pos/10);
-    else if (pos < 0)
-        if(controlParams.useMm)
-            str.sprintf("%d", pos);
-        else
-            str.sprintf("%.1f", (double)pos/10);
-    else
-        str = "0";
-
-    ui->currentZJogSliderDelta->setText(str);
-
-    double newPos;
-    QString to;
-    if(controlParams.useMm)
-        newPos = pos + sliderTo;
-    else
-        newPos = (double)pos/10+sliderTo;
-
-    if(controlParams.useMm)
-        to.sprintf("%.1f", newPos);
-    else
-        to.sprintf("%.1f", newPos);
-
-    if (sliderPressed)
-    {
-        ui->resultingZJogSliderPosition->setText(to);
-        if(controlParams.useMm)
-            info(qPrintable(tr("Usr chg: pos=%d new=%d\n")), pos, newPos);
-        else
-            info(qPrintable(tr("Usr chg: pos=%.1f new=%.1f\n")), (double)pos/10, newPos);
-    }
-    else
-    {
-        ui->verticalSliderZJog->setSliderPosition(CENTER_POS);
-        ui->currentZJogSliderDelta->setText("0");
-        if(controlParams.useMm)
-            info(qPrintable(tr("Usr chg no slider: %d\n")), pos);
-        else
-            info(qPrintable(tr("Usr chg no slider: %.1f\n")), (double) pos/10);
-    }
-}
-
-void MainWindow::zJogSliderPressed()
-{
-    sliderPressed = true;
-    if (workCoordinates.stoppedZ && workCoordinates.sliderZIndex == sliderZCount)
-    {
-        info(qPrintable(tr("Pressed and stopped\n")));
-        sliderTo = workCoordinates.z;
-    }
-    else
-    {
-        info(qPrintable(tr("Pressed not stopped\n")));
-    }
-}
-
-void MainWindow::zJogSliderReleased()
-{
-    info(qPrintable(tr("Released\n")));
-
-    if (sliderPressed)
-    {
-        sliderPressed = false;
-        int value = ui->verticalSliderZJog->value();
-
-        ui->verticalSliderZJog->setSliderPosition(CENTER_POS);
-        ui->currentZJogSliderDelta->setText("0");
-
-        value -= CENTER_POS;
-
-        if (value != 0)
-        {
-/// T4
-            enableAllButtons(false);
-
-            if(controlParams.useMm)
-                sliderTo += value;
-            else
-                sliderTo += (double)value/10;
-            float setTo = value;
-            ui->lcdFeedRateGcode->display(controlParams.zJogRate);
-            cmdMan = true;
-            if(controlParams.useMm)
-                emit axisAdj('Z', setTo, invZ, absoluteAfterAxisAdj, sliderZCount++);
-            else
-                emit axisAdj('Z', setTo/10, invZ, absoluteAfterAxisAdj, sliderZCount++);
-        }
-    }
-}
 
 void MainWindow::setQueuedCommands(int commandCount, bool running)
 {
@@ -2202,7 +2155,6 @@ void MainWindow::stepChanged(int newstep)
     float fs = newstep/100.0;
     if (!controlParams.useMm)
         fs /= MM_IN_AN_INCH ;
-    ui->lcdStep->display(fs);
     jogStep = fs;
 }
 
@@ -2380,10 +2332,8 @@ void MainWindow::setUnitMmAll (bool useMm )
 
     ui->unitFourth->setText(unit);
     // slider
-    int step = ui->sliderStep->value();
-    ui->sliderStep->setValue(0);
-    ui->sliderStep->setValue(step);
-// Grbl
+
+    // Grbl
     if (useMm) {
 
     }
@@ -2396,13 +2346,7 @@ void MainWindow::setUnitMmAll (bool useMm )
 void MainWindow::enableManualControl(bool v)
 {
     ui->chkRestoreAbsolute->setEnabled(v);
-    // step
-    ui->sliderStep->setEnabled(v);
-    ui->lcdStep->setEnabled(v);
-    // dZ
-    ui->verticalSliderZJog->setEnabled(v);
-    ui->currentZJogSliderDelta->setEnabled(v);
-    ui->resultingZJogSliderPosition->setEnabled(v);
+
     // axes buttons
     ui->DecXBtn->setEnabled(v); ui->IncXBtn->setEnabled(v); ui->HomeXBtn->setEnabled(v) ;
     if (ui->lcdWorkNumberX->value()==0)
@@ -2411,8 +2355,16 @@ void MainWindow::enableManualControl(bool v)
     if (ui->lcdWorkNumberY->value()==0)
         ui->HomeYBtn->setEnabled(false);
     ui->DecZBtn->setEnabled(v); ui->IncZBtn->setEnabled(v); ui->HomeZBtn->setEnabled(v) ;
+
+    ui->Step100Btn->setEnabled(v);
+    ui->Step20Btn->setEnabled(v);
+    ui->Step10Btn->setEnabled(v);
+    ui->Step1Btn->setEnabled(v);
+    ui->StepPtOneBtn->setEnabled(v);
+
     if (ui->lcdWorkNumberZ->value()==0)
         ui->HomeZBtn->setEnabled(false) ;
+
     if (controlParams.useFourAxis ) {
         ui->DecFourthBtn->setEnabled(v); ui->IncFourthBtn->setEnabled(v);
         ui->HomeFourthBtn->setEnabled(v) ;
@@ -2466,6 +2418,7 @@ void MainWindow::enableButtonGrblControls(bool v)
 
     ui->btnSetG92->setEnabled(v);
     ui->btnSetHome->setEnabled(v);
+    ui->btnSetHome8mm->setEnabled(v);
     ui->btnGoHomeSafe->setEnabled(v);
     // = 'btnStatus'
   //  ui->pushButtonRefreshPos->setEnabled(v);

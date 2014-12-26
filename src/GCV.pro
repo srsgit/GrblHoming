@@ -12,7 +12,8 @@ TARGET = GrblController
 
 DEFINES = QT_NO_DEBUG
 
-QT   += core gui
+QT += core gui
+
 
 unix {
    QT += widgets
@@ -21,6 +22,7 @@ unix {
 # LETARTARE  June 12, 2014
 contains(QT_VERSION, "^5.*") {
    QT *= widgets
+   QT += printsupport
 }
 
 # LETARTARE  July 28, 2014
@@ -44,7 +46,7 @@ else {
 # QGlViewer
 QT += xml opengl
 INCLUDEPATH += QGLViewer QGLWidget
-LIBS += -lQGlViewer2
+LIBS += -lQGLViewer2
 HEADER +=  visu3D/Point3D.h visu3D/Line3D.h visu3D/Arc3D.h visu3D/Tools3D.h  visu3D/Box3D.h
 SOURCES += visu3D/Point3D.cpp visu3D/Line3D.cpp visu3D/Arc3D.cpp visu3D/Tools3D.cpp visu3D/Box3D.cpp
 

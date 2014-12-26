@@ -27,7 +27,7 @@
 #include "positem.h"
 #include "gcode.h"
 #include "renderarea.h"
-#include "visu3D/viewer3D.h"
+#include "visu3D\viewer3D.h"
 
 #define COMPANY_NAME "zapmaker"
 #define APPLICATION_NAME "GrblController"
@@ -74,6 +74,7 @@ signals:
     void setProgress(int percent);
     void setRuntime(QString runtime);
     void sendSetHome();
+    void sendSetHome8mm();
 /// T3, T4
   //  void sendGrblPause(bool);
     void sendGrblHelp();
@@ -137,6 +138,13 @@ void grblFeedHold();
     void incX();
     void incY();
     void incZ();
+
+    void step100();
+    void step20();
+    void step10();
+    void step1();
+    void stepPtOne();
+
 /// T5
     void homeX();
     void homeY();
@@ -145,6 +153,7 @@ void grblFeedHold();
 
     void endHomeAxis();
     void setHome();
+    void setHome8mm();
      //manualhomeFourth()
     void gotoXYZFourth();
 
@@ -179,9 +188,6 @@ void grblFeedHold();
     void updateCoordinates(Coord3D machineCoord, Coord3D workCoord);
 
     void goHomeSafe();
-    void zJogSliderDisplay(int pos);
-    void zJogSliderPressed();
-    void zJogSliderReleased();
 
     void setQueuedCommands(int commandCount, bool running);
 /// T4

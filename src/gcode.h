@@ -124,6 +124,7 @@ public slots:
     void axisAdj(char axis, float coord, bool inv, bool absoluteAfterAxisAdj, int sliderZCount);
     void setResponseWait(ControlParams controlParams);
     void grblSetHome();
+    void grblSetHome8mm();
 /// T4
     void sendGrblHelp();
     void sendGrblParameters() ;
@@ -179,6 +180,7 @@ private:
     QStringList doZRateLimit(QString strline, QString& msg, bool& xyRateSet);
     void sendStatusList(QStringList& listToSend);
     void clearToHome();
+    void clearToHome8mm();
     bool checkGrbl(const QString& result);
     PosReqStatus positionUpdate(bool forceIfEnabled = false);
     bool checkForGetPosStr(QString& line);

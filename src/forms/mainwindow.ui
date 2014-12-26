@@ -1246,7 +1246,7 @@
                 <property name="smallDecimalPoint">
                  <bool>false</bool>
                 </property>
-                <property name="numDigits">
+                <property name="digitCount">
                  <number>3</number>
                 </property>
                 <property name="segmentStyle">
@@ -1414,7 +1414,7 @@ otherwise all text</string>
         <property name="topMargin">
          <number>0</number>
         </property>
-        <item row="0" column="0" rowspan="5">
+        <item row="0" column="0" rowspan="6">
          <layout class="QVBoxLayout" name="verticalLayout_19">
           <item>
            <widget class="QLabel" name="labelFeedRate">
@@ -1696,7 +1696,7 @@ otherwise all text</string>
           </item>
          </layout>
         </item>
-        <item row="1" column="1">
+        <item row="2" column="1">
          <widget class="QLabel" name="lblX">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
@@ -1729,7 +1729,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="2">
+        <item row="2" column="2">
          <widget class="QLCDNumber" name="lcdMachNumberX">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -1808,7 +1808,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="3">
+        <item row="2" column="3">
          <widget class="QLabel" name="unitX">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -1830,7 +1830,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="4">
+        <item row="2" column="4">
          <widget class="QLCDNumber" name="lcdWorkNumberX">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -1912,7 +1912,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="5">
+        <item row="2" column="5">
          <layout class="QHBoxLayout" name="horizontalLayout_23">
           <item>
            <widget class="QPushButton" name="HomeXBtn">
@@ -1923,7 +1923,7 @@ otherwise all text</string>
              </sizepolicy>
             </property>
             <property name="toolTip">
-             <string>Moves the axis at zero</string>
+             <string>Moves the axis to zero X</string>
             </property>
             <property name="text">
              <string/>
@@ -1976,7 +1976,7 @@ otherwise all text</string>
           </item>
          </layout>
         </item>
-        <item row="2" column="1">
+        <item row="3" column="1">
          <widget class="QLabel" name="lblY">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
@@ -2009,7 +2009,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="2">
+        <item row="3" column="2">
          <widget class="QLCDNumber" name="lcdMachNumberY">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -2087,7 +2087,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="3">
+        <item row="3" column="3">
          <widget class="QLabel" name="unitY">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -2109,7 +2109,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="4">
+        <item row="3" column="4">
          <widget class="QLCDNumber" name="lcdWorkNumberY">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -2190,7 +2190,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="5">
+        <item row="3" column="5">
          <layout class="QHBoxLayout" name="horizontalLayout_17">
           <item>
            <widget class="QPushButton" name="HomeYBtn">
@@ -2201,7 +2201,7 @@ otherwise all text</string>
              </sizepolicy>
             </property>
             <property name="toolTip">
-             <string>Moves the axis at zero</string>
+             <string>Moves the axis to zero Y</string>
             </property>
             <property name="text">
              <string/>
@@ -2254,7 +2254,7 @@ otherwise all text</string>
           </item>
          </layout>
         </item>
-        <item row="3" column="1">
+        <item row="4" column="1">
          <widget class="QLabel" name="lblZ">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
@@ -2287,7 +2287,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
+        <item row="4" column="2">
          <widget class="QLCDNumber" name="lcdMachNumberZ">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -2365,7 +2365,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="3">
+        <item row="4" column="3">
          <widget class="QLabel" name="unitZ">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -2387,7 +2387,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="4">
+        <item row="4" column="4">
          <widget class="QLCDNumber" name="lcdWorkNumberZ">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -2465,7 +2465,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="3" column="5">
+        <item row="4" column="5">
          <layout class="QHBoxLayout" name="horizontalLayout_21">
           <item>
            <widget class="QPushButton" name="HomeZBtn">
@@ -2476,7 +2476,7 @@ otherwise all text</string>
              </sizepolicy>
             </property>
             <property name="toolTip">
-             <string>Moves the axis at zero</string>
+             <string>Moves the axis to zero Z</string>
             </property>
             <property name="text">
              <string/>
@@ -2684,7 +2684,7 @@ otherwise all text</string>
           </item>
          </layout>
         </item>
-        <item row="4" column="1">
+        <item row="5" column="1">
          <widget class="QLabel" name="lblFourth">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Preferred">
@@ -2717,7 +2717,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="3">
+        <item row="5" column="3">
          <widget class="QLabel" name="unitFourth">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
@@ -2739,7 +2739,7 @@ otherwise all text</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="5">
+        <item row="5" column="5">
          <layout class="QHBoxLayout" name="horizontalLayout_22">
           <item>
            <widget class="QPushButton" name="HomeFourthBtn">
@@ -2805,7 +2805,7 @@ Move the axis to the positive values</string>
           </item>
          </layout>
         </item>
-        <item row="4" column="4">
+        <item row="5" column="4">
          <widget class="QLCDNumber" name="lcdWorkNumberFourth">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Maximum">
@@ -2873,7 +2873,7 @@ Move the axis to the positive values</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="2">
+        <item row="5" column="2">
          <widget class="QLCDNumber" name="lcdMachNumberFourth">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
@@ -2957,242 +2957,6 @@ Move the axis to the positive values</string>
           </property>
          </widget>
         </item>
-        <item row="1" column="6" rowspan="4">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QSlider" name="sliderStep">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="MinimumExpanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="toolTip">
-             <string>Step size, accept cursors keyboard commands</string>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>10000</number>
-            </property>
-            <property name="sliderPosition">
-             <number>10000</number>
-            </property>
-            <property name="tracking">
-             <bool>true</bool>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="tickPosition">
-             <enum>QSlider::TicksAbove</enum>
-            </property>
-            <property name="tickInterval">
-             <number>500</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <layout class="QVBoxLayout" name="verticalLayout_15">
-            <item>
-             <widget class="QLabel" name="currentZJogSliderDelta">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QSlider" name="verticalSliderZJog">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Maximum" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="palette">
-               <palette>
-                <active>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>109</red>
-                    <green>109</green>
-                    <blue>109</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Light">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>109</red>
-                    <green>109</green>
-                    <blue>109</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </active>
-                <inactive>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>109</red>
-                    <green>109</green>
-                    <blue>109</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Light">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </inactive>
-                <disabled>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>109</red>
-                    <green>109</green>
-                    <blue>109</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Light">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </disabled>
-               </palette>
-              </property>
-              <property name="toolTip">
-               <string>Small movements of the Z axis</string>
-              </property>
-              <property name="maximum">
-               <number>80</number>
-              </property>
-              <property name="value">
-               <number>40</number>
-              </property>
-              <property name="orientation">
-               <enum>Qt::Vertical</enum>
-              </property>
-              <property name="tickPosition">
-               <enum>QSlider::TicksAbove</enum>
-              </property>
-              <property name="tickInterval">
-               <number>4</number>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="resultingZJogSliderPosition">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>0</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </item>
-        <item row="0" column="6">
-         <widget class="QLCDNumber" name="lcdStep">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>23</height>
-           </size>
-          </property>
-          <property name="palette">
-           <palette>
-            <active>
-             <colorrole role="Light">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>86</red>
-                <green>86</green>
-                <blue>86</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </active>
-            <inactive>
-             <colorrole role="Light">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </inactive>
-            <disabled>
-             <colorrole role="Light">
-              <brush brushstyle="SolidPattern">
-               <color alpha="255">
-                <red>255</red>
-                <green>255</green>
-                <blue>255</blue>
-               </color>
-              </brush>
-             </colorrole>
-            </disabled>
-           </palette>
-          </property>
-          <property name="font">
-           <font>
-            <pointsize>6</pointsize>
-           </font>
-          </property>
-          <property name="toolTip">
-           <string>Step value for the relative movements (G91)</string>
-          </property>
-          <property name="smallDecimalPoint">
-           <bool>false</bool>
-          </property>
-          <property name="digitCount">
-           <number>5</number>
-          </property>
-          <property name="segmentStyle">
-           <enum>QLCDNumber::Flat</enum>
-          </property>
-         </widget>
-        </item>
         <item row="0" column="1">
          <widget class="QPushButton" name="btnGoHomeSafe">
           <property name="sizePolicy">
@@ -3228,6 +2992,86 @@ Move the axis to the positive values</string>
           </property>
          </widget>
         </item>
+        <item row="1" column="6" rowspan="5">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <property name="sizeConstraint">
+           <enum>QLayout::SetDefaultConstraint</enum>
+          </property>
+          <item>
+           <widget class="QGroupBox" name="groupBox">
+            <property name="title">
+             <string/>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QRadioButton" name="Step100Btn">
+               <property name="text">
+                <string>100.0</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="Step20Btn">
+               <property name="text">
+                <string>20.0</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="Step10Btn">
+               <property name="text">
+                <string>10.0</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="Step1Btn">
+               <property name="text">
+                <string>1.0</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QRadioButton" name="StepPtOneBtn">
+               <property name="text">
+                <string>0.1</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="6">
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="title">
+           <string/>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>127</width>
+             <height>24</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="text">
+               <string>Jog Steps</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>
@@ -3255,7 +3099,16 @@ Move the axis to the positive values</string>
           <property name="spacing">
            <number>0</number>
           </property>
-          <property name="margin">
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
            <number>0</number>
           </property>
           <item>
@@ -3354,7 +3207,16 @@ Move the axis to the positive values</string>
           <property name="spacing">
            <number>1</number>
           </property>
-          <property name="margin">
+          <property name="leftMargin">
+           <number>2</number>
+          </property>
+          <property name="topMargin">
+           <number>2</number>
+          </property>
+          <property name="rightMargin">
+           <number>2</number>
+          </property>
+          <property name="bottomMargin">
            <number>2</number>
           </property>
           <item>
@@ -3774,7 +3636,34 @@ Move the axis to the positive values</string>
            <bool>false</bool>
           </property>
           <property name="text">
-           <string>= Zero Position</string>
+           <string>Zero XYZ</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnSetHome8mm">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>8</pointsize>
+           </font>
+          </property>
+          <property name="toolTip">
+           <string>The current position will be the new zero position  :G92 x0 y0 z8.0</string>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>= ZeroXY+ Z8.0</string>
           </property>
          </widget>
         </item>
@@ -3790,7 +3679,7 @@ Move the axis to the positive values</string>
      <x>0</x>
      <y>0</y>
      <width>1216</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp">

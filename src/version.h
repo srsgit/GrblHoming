@@ -8,6 +8,6 @@
  ****************************************************************/
 #ifndef VERSION_H
 #define VERSION_H
-#define GRBL_CONTROLLER_NAME_AND_VERSION    "Grbl Controller Visualizer 3.6.1-T4"
-#define VERSION_BUILD 		"  20140822"
+#define GRBL_CONTROLLER_NAME_AND_VERSION    "Grbl Controller Visualizer 3.6.1-T4 (SRS.1)"
+#define VERSION_BUILD 		"  20141226"
 #endif // VERSION_H

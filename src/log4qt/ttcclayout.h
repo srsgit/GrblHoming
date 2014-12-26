@@ -110,7 +110,7 @@ namespace Log4Qt
 	    	 * The absolute date format string is "ABSOLUTE". The date will be 
 	    	 * formatted as HH:mm:ss.zzz.  
 	    	 */
-	        ABSOLUTE,
+            _ABSOLUTE,
 	    	/*!
 	    	 * The date date format string is "DATE". The date will be formatted 
 	    	 * as MMM YYYY HH:mm:ss.zzzz.
@@ -120,7 +120,7 @@ namespace Log4Qt
 	    	 * The relative date format string is "RELATIVE". The date will be 
 	    	 * formatted as milliseconds since start of the program.
 	    	 */
-	        RELATIVE
+            _RELATIVE
 	    };
 	    Q_ENUMS(DateFormat)
 	        
