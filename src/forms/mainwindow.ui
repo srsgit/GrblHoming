@@ -1636,12 +1636,39 @@ otherwise all text</string>
            <number>0</number>
           </property>
           <item>
+           <widget class="QPushButton" name="btnGoHomeSafe">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>Go Home :first moves the Z axis
+ then all axes synchronously at zero</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../GrblController.qrc">
+              <normaloff>:/img/homeall.png</normaloff>:/img/homeall.png</iconset>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="labelMachCoord">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>110</width>
+              <height>0</height>
+             </size>
             </property>
             <property name="text">
              <string>Machine Coordinates</string>
@@ -1654,7 +1681,21 @@ otherwise all text</string>
          </layout>
         </item>
         <item row="0" column="4">
-         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0">
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0">
+          <item>
+           <widget class="QPushButton" name="btnSetG92">
+            <property name="toolTip">
+             <string>The current position will be the new zero position :G92 x0 y0 z0</string>
+            </property>
+            <property name="text">
+             <string/>
+            </property>
+            <property name="icon">
+             <iconset resource="../GrblController.qrc">
+              <normaloff>:/img/isoview1.png</normaloff>:/img/isoview1.png</iconset>
+            </property>
+           </widget>
+          </item>
           <item>
            <widget class="QLabel" name="labelWorkCoord">
             <property name="sizePolicy">
@@ -1662,6 +1703,12 @@ otherwise all text</string>
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>110</width>
+              <height>0</height>
+             </size>
             </property>
             <property name="text">
              <string>Work Coordinates</string>
@@ -1739,7 +1786,7 @@ otherwise all text</string>
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>140</width>
             <height>40</height>
            </size>
           </property>
@@ -1840,7 +1887,7 @@ otherwise all text</string>
           </property>
           <property name="minimumSize">
            <size>
-            <width>0</width>
+            <width>140</width>
             <height>40</height>
            </size>
           </property>
@@ -2957,41 +3004,6 @@ Move the axis to the positive values</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="1">
-         <widget class="QPushButton" name="btnGoHomeSafe">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="toolTip">
-           <string>Go Home :first moves the Z axis
- then all axes synchronously at zero</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../GrblController.qrc">
-            <normaloff>:/img/homeall.png</normaloff>:/img/homeall.png</iconset>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QPushButton" name="btnSetG92">
-          <property name="toolTip">
-           <string>The current position will be the new zero position :G92 x0 y0 z0</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../GrblController.qrc">
-            <normaloff>:/img/isoview1.png</normaloff>:/img/isoview1.png</iconset>
-          </property>
-         </widget>
-        </item>
         <item row="1" column="6" rowspan="5">
          <layout class="QVBoxLayout" name="verticalLayout">
           <property name="sizeConstraint">
@@ -3071,6 +3083,19 @@ Move the axis to the positive values</string>
            </layout>
           </widget>
          </widget>
+        </item>
+        <item row="2" column="7">
+         <spacer name="horizontalSpacer_9">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
         </item>
        </layout>
       </item>
