@@ -1228,7 +1228,7 @@ void MainWindow::openFile()
 {
     QFileDialog dialog(this, tr("Open File"),
                        directory,
-                       tr("NC (*.nc);;All Files (*.*)"));
+                       tr("GCode (*.nc *.ngc *.gcode);;All Files (*.*)"));
 
     dialog.setFileMode(QFileDialog::ExistingFile);
 
