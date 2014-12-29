@@ -452,11 +452,9 @@ void Viewer::setBottomView()
 void Viewer::set3DView()
 {
 	/// 3D view  (-x, -Y, -Z)
-	camera()->setViewDirection(qglviewer::Vec(-1, -1, -1));
-    /// directs the scene vertically upwards
-	//camera()->setUpVector (qglviewer::Vec(0, 1, 0 ));
-	camera()->setUpVector (qglviewer::Vec(-2, 4, -3));
-	// all items
+    camera()->setUpVector (qglviewer::Vec(0, 0, 1));
+
+    camera()->setViewDirection(qglviewer::Vec(-2, 2, -3));
 	showEntireScene();
 }
 void Viewer::setVectorUp()

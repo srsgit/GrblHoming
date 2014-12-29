@@ -22,12 +22,11 @@ First use of GIT so may not be properly structured.
 Had to hack ABSOLUTE and RELATIVE in Log4QT, name clash somewhere
 Replace Jog Step slider with radio buttons
 Add Zero X,Y, Z8.0 for touch off against 8mm rod
+Add extra GCode file extensions to FileOpen
+Chnage 3D view viewpoint to be above
 
 Compiled with Qt 5.2.0 / MINGW48_32
 Using QGLViewer 2.6.0
-
-
-
 
 --------------------------------------------------------------------------------
 
