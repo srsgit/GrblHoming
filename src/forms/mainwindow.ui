@@ -3550,6 +3550,21 @@ Move the axis to the positive values</string>
           </item>
          </layout>
         </widget>
+        <widget class="QWidget" name="tabWebcam">
+         <attribute name="title">
+          <string>Webcam</string>
+         </attribute>
+         <widget class="QComboBox" name="comboBoxCamera">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>69</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+        </widget>
        </widget>
       </item>
       <item>
