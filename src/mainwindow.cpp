@@ -133,8 +133,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->Step10Btn,SIGNAL(clicked()),this,SLOT(step10()));
     connect(ui->Step1Btn,SIGNAL(clicked()),this,SLOT(step1()));
     connect(ui->StepPtOneBtn,SIGNAL(clicked()),this,SLOT(stepPtOne()));
+    connect(ui->StepPtPtOneBtn,SIGNAL(clicked()),this,SLOT(stepPtPtOne()));
 
-    ui->StepPtOneBtn->toggle();
+    ui->Step10Btn->toggle();
 
     /// T4
     connect(ui->HomeXBtn,SIGNAL(clicked()),this,SLOT(homeX()));
@@ -1050,31 +1051,37 @@ void MainWindow::enableGrblDialogButton()
 
 void MainWindow::step100()
 {
-    jogStep = 100.0 * 100.0;
+    jogStep = 10000; // 100.0 * 100.0;
     stepChanged(jogStep);
 }
 
 void MainWindow::step20()
 {
-    jogStep = 20.0 * 100.0;
+    jogStep = 2000; // 20.0 * 100.0;
     stepChanged(jogStep);
 }
 
 void MainWindow::step10()
 {
-    jogStep = 10.0 * 100.0;
+    jogStep = 1000; // 10 * 100.0;
     stepChanged(jogStep);
 }
 
 void MainWindow::step1()
 {
-    jogStep = 1.0 * 100.0;
+    jogStep = 100; // 1 * 100.0;
     stepChanged(jogStep);
 }
 
 void MainWindow::stepPtOne()
 {
-    jogStep = 0.1 * 100.0;
+    jogStep = 10; // 0.1 * 100.0;
+    stepChanged(jogStep);
+}
+
+void MainWindow::stepPtPtOne()
+{
+    jogStep = 1; // 0.01 * 100.0;
     stepChanged(jogStep);
 }
 
@@ -1622,7 +1629,7 @@ void MainWindow::readSettings()
     absoluteAfterAxisAdj = (absAfterAdj == "true");
     ui->chkRestoreAbsolute->setChecked(absoluteAfterAxisAdj);
 
-    QString jogStepStr = settings.value(SETTINGS_JOG_STEP, "10").value<QString>();
+    QString jogStepStr = settings.value(SETTINGS_JOG_STEP, "0.1").value<QString>();
     jogStep = jogStepStr.toFloat() ;
 
 
@@ -2361,6 +2368,7 @@ void MainWindow::enableManualControl(bool v)
     ui->Step10Btn->setEnabled(v);
     ui->Step1Btn->setEnabled(v);
     ui->StepPtOneBtn->setEnabled(v);
+    ui->StepPtPtOneBtn->setEnabled(v);
 
     if (ui->lcdWorkNumberZ->value()==0)
         ui->HomeZBtn->setEnabled(false) ;

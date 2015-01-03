@@ -3050,6 +3050,13 @@ Move the axis to the positive values</string>
                </property>
               </widget>
              </item>
+             <item>
+              <widget class="QRadioButton" name="StepPtPtOneBtn">
+               <property name="text">
+                <string>0.01</string>
+               </property>
+              </widget>
+             </item>
             </layout>
            </widget>
           </item>

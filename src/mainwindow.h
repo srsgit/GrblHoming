@@ -144,6 +144,7 @@ void grblFeedHold();
     void step10();
     void step1();
     void stepPtOne();
+    void stepPtPtOne();
 
 /// T5
     void homeX();
