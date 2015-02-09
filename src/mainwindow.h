@@ -142,7 +142,9 @@ void grblFeedHold();
     void step100();
     void step20();
     void step10();
+    void step2();
     void step1();
+    void stepPtTwo();
     void stepPtOne();
 
 /// T5

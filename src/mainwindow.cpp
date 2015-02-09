@@ -131,10 +131,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->Step100Btn,SIGNAL(clicked()),this,SLOT(step100()));
     connect(ui->Step20Btn,SIGNAL(clicked()),this,SLOT(step20()));
     connect(ui->Step10Btn,SIGNAL(clicked()),this,SLOT(step10()));
+    connect(ui->Step2Btn,SIGNAL(clicked()),this,SLOT(step2()));
     connect(ui->Step1Btn,SIGNAL(clicked()),this,SLOT(step1()));
+    connect(ui->StepPtTwoBtn,SIGNAL(clicked()),this,SLOT(stepPtTwo()));
     connect(ui->StepPtOneBtn,SIGNAL(clicked()),this,SLOT(stepPtOne()));
 
     ui->StepPtOneBtn->toggle();
+    stepPtOne();
 
     /// T4
     connect(ui->HomeXBtn,SIGNAL(clicked()),this,SLOT(homeX()));
@@ -1066,9 +1069,21 @@ void MainWindow::step10()
     stepChanged(jogStep);
 }
 
+void MainWindow::step2()
+{
+    jogStep = 2.0 * 100.0;
+    stepChanged(jogStep);
+}
+
 void MainWindow::step1()
 {
     jogStep = 1.0 * 100.0;
+    stepChanged(jogStep);
+}
+
+void MainWindow::stepPtTwo()
+{
+    jogStep = 0.2 * 100.0;
     stepChanged(jogStep);
 }
 
@@ -2359,7 +2374,9 @@ void MainWindow::enableManualControl(bool v)
     ui->Step100Btn->setEnabled(v);
     ui->Step20Btn->setEnabled(v);
     ui->Step10Btn->setEnabled(v);
+    ui->Step2Btn->setEnabled(v);
     ui->Step1Btn->setEnabled(v);
+    ui->StepPtTwoBtn->setEnabled(v);
     ui->StepPtOneBtn->setEnabled(v);
 
     if (ui->lcdWorkNumberZ->value()==0)
